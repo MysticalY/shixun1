@@ -1,0 +1,12 @@
+rootProject.name = "e-commerce"
+include ':app'
+include ':model-home'
+include ':library-network'
+include ':model-principal'
+include ':model-classify'
+include ':model-shopping'
+include ':model-tidings'
+include ':model-mine'
+include ':library-community'
+include ':library-Base'
+include ':library-pay'

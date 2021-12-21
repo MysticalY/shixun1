@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/xian"
+    android:padding="@dimen/dp_10"
+    android:layout_height="100dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/address_img"
+        android:layout_width="60dp"
+        android:src="@mipmap/bg_me_header"
+        android:layout_height="60dp">
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/address_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+
+        android:text="123456"
+        android:textSize="@dimen/dp_10"></TextView>
+    <TextView
+        android:id="@+id/address_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_toRightOf="@+id/address_name"
+        android:text="123456"
+        android:textSize="@dimen/dp_10"></TextView>
+
+
+    <TextView
+        android:layout_below="@+id/address_name"
+        android:textColor="#F44336"
+        android:id="@+id/address_zone"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/address_img"
+        >
+
+    </TextView>
+</RelativeLayout>

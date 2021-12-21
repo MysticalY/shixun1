@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="@dimen/dp_10"
+    tools:ignore="MissingDefaultResource">
+    <CheckBox
+        android:id="@+id/shopping_cb"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </CheckBox>
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/shopping_cb"
+        android:id="@+id/shopping_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/shopping_name"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:textSize="@dimen/dp_10"
+        android:layout_toRightOf="@+id/shopping_img"
+        android:text="123456"></TextView>
+    <TextView
+        android:textColor="#F44336"
+        android:text="￥"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/shopping_img"
+        android:layout_below="@+id/shopping_name">
+
+    </TextView>
+    <TextView
+        android:textColor="#F44336"
+        android:id="@+id/shopping_price"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/shopping_img"
+        android:layout_below="@+id/shopping_name">
+
+    </TextView>
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/xian"
+        android:layout_width="wrap_content"
+        android:padding="4dp"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="-"
+            android:id="@+id/shopping_minus"
+            android:gravity="center"
+            android:background="#fff"
+            android:layout_width="20dp"
+            android:layout_height="20dp">
+
+        </Button>
+        <TextView
+
+            android:gravity="center"
+            android:id="@+id/shopping_num"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <Button
+            android:text="＋"
+            android:id="@+id/shopping_add"
+            android:gravity="center"
+            android:background="#fff"
+            android:layout_width="20dp"
+            android:layout_height="20dp">
+
+        </Button>
+    </LinearLayout>
+</RelativeLayout>

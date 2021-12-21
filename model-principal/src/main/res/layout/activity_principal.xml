@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.PrincipalActivity">
+    <RelativeLayout
+        android:background="#03A9F4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40">
+        <TextView
+            android:text="＜"
+            android:textColor="#fff"
+            android:id="@+id/pp_finish"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:textColor="#fff"
+            android:text="详情"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+    </RelativeLayout>
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/principal_name"
+        android:gravity="center"
+        android:text="1234"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <TextView
+        android:layout_below="@+id/principal_name"
+        android:id="@+id/principal_text"
+        android:text="12345654323"
+        android:layout_marginTop="@dimen/dp_40"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <ImageView
+        android:layout_below="@+id/principal_text"
+        android:id="@+id/principal_img"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"></ImageView>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+
+            android:drawableTop="@drawable/baseline_star_border_blue_grey_200_24dp"
+            android:text="分享"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <TextView
+
+            android:drawableTop="@drawable/shopping"
+            android:text="购物车"
+            android:textSize="15dp"
+            android:id="@+id/principal_shipping"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/principal_but"
+            android:layout_marginRight="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <com.ehenjoom.redspot.RedSpot
+            android:visibility="invisible"
+            android:id="@+id/principal_num"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="1dp"
+            android:layout_alignRight="@+id/principal_shipping"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <Button
+            android:id="@+id/principal_but"
+            android:text="加入购物车"
+            android:textColor="#fff"
+            android:layout_alignParentRight="true"
+            android:background="#FF0000"
+            android:layout_width="170dp"
+            android:layout_height="match_parent">
+
+        </Button>
+    </RelativeLayout>
+
+
+</RelativeLayout>

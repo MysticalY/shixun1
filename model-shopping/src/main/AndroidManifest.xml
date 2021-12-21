@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.model_shopping">
+    <application>
+        <activity android:name=".PayoffActivity" android:exported="true"/>
+        <activity android:name=".AddressActivity" android:exported="true"/>
+        <activity android:name=".ui.MassagerActivity" android:exported="true"/>
+    </application>
+
+</manifest>

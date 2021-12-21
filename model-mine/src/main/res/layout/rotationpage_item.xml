@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.zhpan.bannerview.BannerViewPager
+        android:id="@+id/rotation_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.zhpan.bannerview.BannerViewPager>
+    <TextView
+        android:id="@+id/text_banner"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="160dp"
+        android:layout_marginStart="50dp"
+        android:lineSpacingExtra="5dp"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+    <TextView
+        android:id="@+id/text_but"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="进入"
+        android:textColor="#fff"
+        android:background="#FFEB3B"
+        android:layout_width="60dp"
+        android:layout_height="35dp">
+
+    </TextView>
+</RelativeLayout>

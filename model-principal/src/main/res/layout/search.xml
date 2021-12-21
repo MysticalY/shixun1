@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#0DB4FF"
+    android:layout_height="50dp">
+    <EditText
+        android:id="@+id/cearch_ed"
+        android:layout_marginLeft="30dp"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/searchimg"
+        android:background="@drawable/xian"
+        android:textColor="#FFFFFF"
+        android:text="搜索商品/品类"
+        android:textSize="10dp"
+        android:focusable="false"
+        android:layout_width="250dp"
+        android:layout_height="25dp"></EditText>
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@id/cearch_ed"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/cropimg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"></ImageView>
+        <TextView
+            android:text="扫一扫"
+            android:textSize="10dp"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+
+</RelativeLayout>
