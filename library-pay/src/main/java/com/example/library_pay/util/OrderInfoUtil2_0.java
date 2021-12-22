@@ -72,7 +72,7 @@ public class OrderInfoUtil2_0 {
 	/**
 	 * 构造支付订单参数列表
 	 */
-	public static Map<String, String> buildOrderParamMap(String app_id, boolean rsa2,float price) {
+	public static Map<String, String> buildOrderParamMap(String app_id, boolean rsa2,String price) {
 		Map<String, String> keyValues = new HashMap<String, String>();
 
 		keyValues.put("app_id", app_id);

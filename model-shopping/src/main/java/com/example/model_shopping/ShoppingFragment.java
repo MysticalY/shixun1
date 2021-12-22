@@ -37,6 +37,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +93,7 @@ public class ShoppingFragment extends BaseFragment {
 
     @Override
     public void initData() {
+
         shopRv.setLayoutManager(new LinearLayoutManager(getContext()));
 
         shopRv.addItemDecoration(new Y_DividerItemDecoration(getContext()) {
@@ -121,9 +123,7 @@ public class ShoppingFragment extends BaseFragment {
             if (adapter.getData().get(i).isEstimate()) {
                 ShoppingBean shoppingBean = shoppingDao.find(adapter.getData().get(i).getId());
                 shoppingDao.deletes(shoppingBean);
-//                                adapter.notifyItemRemoved(i);
                 adapter.getData().remove(i);
-
             }
         }
         adapter.notifyDataSetChanged();
@@ -215,10 +215,22 @@ public class ShoppingFragment extends BaseFragment {
                 total += (all.get(i).getNumber() * Float.parseFloat(all.get(i).getMoney()));
             }
         }
-
-        shopPrice.setText(String.valueOf(total));
+        shopPrice.setText(new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
         adapter.notifyDataSetChanged();
     }
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if (adapter!=null){
+//            adapter.getData().clear();
+//            shoppingDao = ShoppingDataBase.getInstance(getContext().getApplicationContext()).getShoppingDao();
+//            all = shoppingDao.findAll();
+//            adapter.getData().addAll(all);
+//            adapter.notifyDataSetChanged();
+//        }
+//
+//    }
+//
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void notifyAdapter(String msg) {
@@ -247,9 +259,10 @@ public class ShoppingFragment extends BaseFragment {
             }
             EventBus.getDefault().postSticky(list);
             List<ShoppingBean> all = shoppingDao.findAll();
-
-            adapter = new ShoppingAdapter(all);
-            shopRv.setAdapter(adapter);
+            adapter.getData().clear();
+            adapter.getData().addAll(all);
+//            adapter = new ShoppingAdapter(all);
+//            shopRv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
 
         }

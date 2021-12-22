@@ -9,12 +9,12 @@ import java.util.List;
  * ____╚██╔╝    ██╔══██║  ██║╚██╗ ██║  ██║   ██║
  * _____██║     ██║  ██║  ██║ ╚████║   ╚██████╔╝
  * _____╚═╝     ╚═╝  ╚═╝  ╚═╝  ╚═══╝    ╚═════╝
- * Date:2021/12/11
- * Time:9:20
+ * Date:2021/12/21
+ * Time:11:23
  * author:YangHaoYang
  * Package com.example.model_home.bean
  */
-public class Account {
+public class AddressBean {
     private Integer code;
     private List<DataBean> data;
     private String msg;
@@ -45,9 +45,9 @@ public class Account {
 
     public static class DataBean {
         private Integer id;
-        private Integer category_id;
-        private Integer parent_id;
-        private String category_name;
+        private String displaytime;
+        private String description;
+        private String goodscode;
 
         public Integer getId() {
             return id;
@@ -57,28 +57,28 @@ public class Account {
             this.id = id;
         }
 
-        public Integer getCategory_id() {
-            return category_id;
+        public String getDisplaytime() {
+            return displaytime;
         }
 
-        public void setCategory_id(Integer category_id) {
-            this.category_id = category_id;
+        public void setDisplaytime(String displaytime) {
+            this.displaytime = displaytime;
         }
 
-        public Integer getParent_id() {
-            return parent_id;
+        public String getDescription() {
+            return description;
         }
 
-        public void setParent_id(Integer parent_id) {
-            this.parent_id = parent_id;
+        public void setDescription(String description) {
+            this.description = description;
         }
 
-        public String getCategory_name() {
-            return category_name;
+        public String getGoodscode() {
+            return goodscode;
         }
 
-        public void setCategory_name(String category_name) {
-            this.category_name = category_name;
+        public void setGoodscode(String goodscode) {
+            this.goodscode = goodscode;
         }
     }
 }

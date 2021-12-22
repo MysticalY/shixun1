@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        app:title="返回"
+        android:id="@+id/home_tb"
+        app:titleTextColor="#fff"
+        android:background="#2196F3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/home_st"
         android:layout_width="match_parent"

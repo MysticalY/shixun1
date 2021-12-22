@@ -3,6 +3,7 @@
     package="com.example.model_home">
     <application>
         <activity android:name=".ui.HomeActivity" android:exported="true"></activity>
+        <activity android:name=".ui.DeliveryActivity"></activity>
     </application>
 
 

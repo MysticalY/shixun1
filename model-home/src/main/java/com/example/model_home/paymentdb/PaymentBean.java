@@ -3,6 +3,7 @@ package com.example.model_home.paymentdb;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.StringJoiner;
 
 /**
@@ -18,7 +19,7 @@ import java.util.StringJoiner;
  * Package com.example.library_community.payment
  */
 @Entity
-public class PaymentBean {
+public class PaymentBean implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String pic;

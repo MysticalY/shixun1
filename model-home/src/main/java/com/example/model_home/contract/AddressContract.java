@@ -1,8 +1,10 @@
-package com.example.model_home.db;
+package com.example.model_home.contract;
 
-import androidx.room.Dao;
+import com.example.library_base.model.IModel;
+import com.example.library_base.view.IView;
+import com.example.model_home.bean.AddressBean;
 
-import com.example.library_community.util.RoomUtil;
+import io.reactivex.Observer;
 
 /**
  * _ ██╗   ██╗   █████╗   ███╗    ██╗   ██████╗
@@ -11,11 +13,16 @@ import com.example.library_community.util.RoomUtil;
  * ____╚██╔╝    ██╔══██║  ██║╚██╗ ██║  ██║   ██║
  * _____██║     ██║  ██║  ██║ ╚████║   ╚██████╔╝
  * _____╚═╝     ╚═╝  ╚═╝  ╚═╝  ╚═══╝    ╚═════╝
- * Date:2021/12/10
- * Time:18:51
- * author:yanghaoyang
+ * Date:2021/12/21
+ * Time:11:25
+ * author:YangHaoYang
+ * Package com.example.model_home.contract
  */
-@Dao
-public abstract class PersonDao extends RoomUtil<Person>{
-
+public interface AddressContract {
+    interface geiAddressView extends IView{
+        void getAddressBean (AddressBean bean);
+    }
+    interface getAddressModel extends IModel{
+        void requestAddress(String goodscode, Observer<AddressBean> observer);
+    }
 }

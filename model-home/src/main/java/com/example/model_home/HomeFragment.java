@@ -38,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * author:yanghaoyang
  */
 @Route(path = ARouterPath.Home.PAGER_HOME)
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private Button inster;
     private Button query;
     private CircleImageView fragmentImg;
@@ -76,14 +76,11 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initData() {
         paymentDao = PaymentDataBean.getInstance(getActivity()).getPaymentDao();
+        homePay.setOnClickListener(this);
+        homeReceipt.setOnClickListener(this);
+        homeFinish.setOnClickListener(this);
+        homeOrder.setOnClickListener(this);
 
-        homeReceipt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(getContext(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -107,5 +104,30 @@ public class HomeFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.home_pay) {
+
+            Intent intent =new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page",0);
+            startActivity(intent);
+        }
+        if (view.getId()==R.id.home_receipt){
+            Intent intent =new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page",1);
+            startActivity(intent);
+        }
+         if (view.getId()==R.id.home_finish){
+            Intent intent =new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page",2);
+             startActivity(intent);
+        }
+         if (view.getId()==R.id.home_order){
+            Intent intent =new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page",3);
+             startActivity(intent);
+        }
     }
 }

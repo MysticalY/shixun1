@@ -43,6 +43,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -156,7 +157,8 @@ public class PayoffActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
-                payV2(total);
+                String s = new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+                payV2(s);
             }
         });
         //选择收获人
@@ -177,6 +179,7 @@ public class PayoffActivity extends BaseActivity {
         }
     }
     public void sum(){
+        total = 0f;
         bean = (List<ShoppingBean>) getIntent().getSerializableExtra("pay");
         adapter = new PayAdapter(bean);
             payoffRv.setAdapter(adapter);
@@ -184,7 +187,7 @@ public class PayoffActivity extends BaseActivity {
         for (int i = 0; i < adapter.getData().size(); i++) {
             total +=adapter.getData().get(i).getNumber()*Float.valueOf(adapter.getData().get(i).getMoney());
         }
-        payoffPrice.setText(String.valueOf(total));
+        payoffPrice.setText(new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
     }
     private View addView() {
         return LayoutInflater.from(this).inflate(R.layout.pay_item2,null);
@@ -228,7 +231,7 @@ public class PayoffActivity extends BaseActivity {
     /**
      * 支付宝支付业务示例
      */
-    public void payV2(float price) {
+    public void payV2(String price) {
         if (TextUtils.isEmpty(APPID) || (TextUtils.isEmpty(RSA2_PRIVATE) && TextUtils.isEmpty(RSA_PRIVATE))) {
             return;
         }
