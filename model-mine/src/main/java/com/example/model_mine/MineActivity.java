@@ -103,7 +103,6 @@ public class MineActivity  extends BaseActivity {
 
                   }else {
                       getSupportFragmentManager().beginTransaction().hide(list.get(previousPosition)).show(list.get(currentPosition)).commitAllowingStateLoss();
-
                   }
 
 

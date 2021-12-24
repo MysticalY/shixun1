@@ -2,7 +2,6 @@ package com.example.model_tidings;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.library_base.view.BaseFragment;
@@ -25,7 +24,9 @@ import io.rong.imlib.RongIMClient;
  */
 @Route(path = ARouterPath.tidings.PAGER_TIDINGS)
 public class TidingsFragment extends BaseFragment {
-    private Button tidingsBut;
+
+    private String token;
+    private Button tidingBut;
 
     @Override
     public int bindLayout() {
@@ -35,20 +36,20 @@ public class TidingsFragment extends BaseFragment {
 
     @Override
     public void initView() {
-
-        tidingsBut = (Button) findViewById(R.id.tidings_but);
+        token = "k1Q5E43t/fQGW6AKVwydsLLlwZA4+txyRAdAsHENTiA=@gwdp.cn.rongnav.com;gwdp.cn.rongcfg.com";
+        tidingBut = (Button) findViewById(R.id.tiding_but);
     }
 
     @Override
     public void initData() {
-        tidingsBut.setOnClickListener(new View.OnClickListener() {
+        tidingBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String token = "k1Q5E43t/fQGW6AKVwydsLLlwZA4+txyRAdAsHENTiA=@gwdp.cn.rongnav.com;gwdp.cn.rongcfg.com";
                 RongIM.connect(token, new RongIMClient.ConnectCallback() {
                     @Override
                     public void onSuccess(String userId) {
                         // 登录成功，跳转到默认会话列表页。
+                        RouteUtils.routeToConversationListActivity(getContext(), token);
                     }
 
                     @Override
@@ -61,8 +62,12 @@ public class TidingsFragment extends BaseFragment {
 
                     }
                 });
-                RouteUtils.routeToConversationListActivity(getContext(), token);
             }
         });
+
+
     }
+
+   
 }
+
