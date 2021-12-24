@@ -6,17 +6,20 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.e_commerce"
         minSdkVersion 24
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -53,8 +56,12 @@ dependencies {
     implementation rootProject.ext.dependencies["aRouter-api"]
     debugImplementation 'com.guolindev.glance:glance:1.1.0'
     annotationProcessor rootProject.ext.dependencies["aRputer-compiler"]
+
+    //直播
+    implementation project(path: ':library-community')
+
+    implementation 'com.tencent.liteav:LiteAVSDK_Smart:latest.release'
     if (isBuildModle.toBoolean()){
-        implementation project(path: ':library-community')
     }else {
         implementation project(path: ':model-classify')
         implementation project(path: ':model-shopping')
@@ -62,6 +69,6 @@ dependencies {
         implementation project(path: ':model-tidings')
         implementation project(path: ':model-principal')
         implementation project(path: ':model-mine')
-
+        implementation project(path: ':model-subscriber')
     }
 }

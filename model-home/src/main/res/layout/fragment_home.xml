@@ -20,6 +20,7 @@
         <TextView
             android:text="12345"
             android:textColor="#FFFFFF"
+            android:id="@+id/home_name"
             android:layout_toRightOf="@+id/fragment_img"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_10"

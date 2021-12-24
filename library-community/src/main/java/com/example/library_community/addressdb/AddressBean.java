@@ -1,6 +1,7 @@
 package com.example.library_community.addressdb;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -33,6 +34,7 @@ public class AddressBean implements Serializable {
         this.zone = zone;
     }
 
+    @Ignore
     public AddressBean() {
     }
 

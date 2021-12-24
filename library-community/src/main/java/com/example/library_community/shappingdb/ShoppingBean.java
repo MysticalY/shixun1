@@ -1,6 +1,7 @@
 package com.example.library_community.shappingdb;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -36,7 +37,7 @@ public class ShoppingBean implements Serializable {
         this.estimate = estimate;
         this.number = number;
     }
-
+    @Ignore
     public ShoppingBean() {
     }
 

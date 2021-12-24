@@ -17,4 +17,12 @@ public class ARouterActivityPath {
         private static final String PAY = "/Pay";
         public static final String PAY_HOME = PAY+"/Pay";
     }
+    public final static class login{
+        private static final String LOGIN = "/Login";
+        public static final String LOGIN_HOME = LOGIN+"/Login";
+    }
+    public final static class mine{
+        private static final String MINE = "/Mine";
+        public static final String MINE_HOME = MINE+"/Mine";
+    }
 }

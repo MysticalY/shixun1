@@ -3,7 +3,7 @@
     package="com.example.model_mine">
 
     <application>
-        <activity  android:name=".MineActivity"    android:exported="true" >
+        <activity  android:name=".MineActivity" android:exported="true" >
 
         </activity>
         <activity android:name=".Firing" android:exported="true" android:theme="@style/Theme.AppCompat.lianI">

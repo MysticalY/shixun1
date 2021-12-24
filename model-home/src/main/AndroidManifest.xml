@@ -4,7 +4,7 @@
     <application>
         <activity android:name=".ui.HomeActivity" android:exported="true"></activity>
         <activity android:name=".ui.DeliveryActivity"></activity>
+        <activity android:name=".ui.AppraiseActivity"></activity>
     </application>
-
 
 </manifest>

@@ -45,7 +45,7 @@ public class HttpRetrofit {
                         .addNetworkInterceptor(new Interceptor() {
                             @Override
                             public Response intercept(Chain chain) throws IOException {
-                               Request  request = chain.request().newBuilder().header("Authorization", "bearer IWuVgJ-RmHD9lKetcJyI4GeswDhX9Urm0naiIGpfG_I0Jba4Ws6NH_0nydGDMdjRYo29HtAoteREjlrg05UAWIlXYFRtaAbZj1mtzhAkFKC8jRKsMIBlLilZycQSdNdFu5VWU2ekbnNggh2GVcqw-AZuR5kgJI9Tn9xJDNfdckFNbZTzwNatx4IYrXwssn7pvugPeFh4twKTLBImPfn5X1WXAHEo6qsOWliuaBQUUtqRVHuVT_lS1kkSh0J9i4qBoOEoAqQ0i__WRw2DamuK3TFnWdZR1hlbtG9Zby4jGA4")
+                               Request  request = chain.request().newBuilder().header("Authorization", "bearer AIfbRm5G1BVNoVr2j-KMFHcGq5ZbGqfLGyE9jJNOkywP2YvbAyb-nct0LDVuO5Nuw3E0I6QlbFA1ffojCe8CYg6LcfFzthNfzha9wj2CD9NmzOgopyYE96WU6EcvKAVG2q6du7gDNHFuf77vFJhAjGL4ws9kaRgWBbe34NK7ybspfIdQyd2w1H6FqdsX3qa_Wwyw8y76kud3cyagGbS6XbfuNxTxcZBMVGkofeXB2o9iHpXSoix4dHUn67Bb0UctKlpoHAOSzUgLW7Dr2deWtyIBqkMV076PiUcq8Ab67ng")
                                        .build();
                                 Response proceed = chain.proceed(request);
                                 return proceed;

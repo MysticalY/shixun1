@@ -13,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.library_base.view.BaseFragment;
 import com.example.library_community.ARouterPath;
 import com.example.library_community.shappingdb.ShoppingBean;
+import com.example.library_community.util.SpUtil;
 import com.example.model_home.paymentdb.PaymentBean;
 import com.example.model_home.paymentdb.PaymentDao;
 import com.example.model_home.paymentdb.PaymentDataBean;
@@ -49,6 +50,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private TextView homeReceipt;
     private TextView homeFinish;
     private TextView homeOrder;
+    private TextView homeName;
 
 
     @Override
@@ -71,10 +73,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         homeReceipt = (TextView) findViewById(R.id.home_receipt);
         homeFinish = (TextView) findViewById(R.id.home_finish);
         homeOrder = (TextView) findViewById(R.id.home_order);
+        homeName = (TextView) findViewById(R.id.home_name);
     }
 
     @Override
     public void initData() {
+        String name = (String) SpUtil.getInstance().get(getContext(), "name", "", "name.xml");
+        homeName.setText(name);
         paymentDao = PaymentDataBean.getInstance(getActivity()).getPaymentDao();
         homePay.setOnClickListener(this);
         homeReceipt.setOnClickListener(this);
@@ -110,24 +115,24 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.home_pay) {
 
-            Intent intent =new Intent(getContext(), HomeActivity.class);
-            intent.putExtra("page",0);
+            Intent intent = new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page", 0);
             startActivity(intent);
         }
-        if (view.getId()==R.id.home_receipt){
-            Intent intent =new Intent(getContext(), HomeActivity.class);
-            intent.putExtra("page",1);
+        if (view.getId() == R.id.home_receipt) {
+            Intent intent = new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page", 1);
             startActivity(intent);
         }
-         if (view.getId()==R.id.home_finish){
-            Intent intent =new Intent(getContext(), HomeActivity.class);
-            intent.putExtra("page",2);
-             startActivity(intent);
+        if (view.getId() == R.id.home_finish) {
+            Intent intent = new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page", 2);
+            startActivity(intent);
         }
-         if (view.getId()==R.id.home_order){
-            Intent intent =new Intent(getContext(), HomeActivity.class);
-            intent.putExtra("page",3);
-             startActivity(intent);
+        if (view.getId() == R.id.home_order) {
+            Intent intent = new Intent(getContext(), HomeActivity.class);
+            intent.putExtra("page", 3);
+            startActivity(intent);
         }
     }
 }

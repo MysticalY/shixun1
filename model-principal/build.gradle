@@ -36,8 +36,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     compile 'com.github.shts:TriangleLabelView:1.1.2'
 
-    //工具类
-    implementation 'com.blankj:utilcode:1.30.6'
     // 基础依赖包，必须要依赖
     api 'com.gyf.immersionbar:immersionbar:3.0.0'
     //核心必须依赖

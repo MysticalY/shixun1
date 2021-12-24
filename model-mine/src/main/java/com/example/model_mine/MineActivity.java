@@ -7,13 +7,16 @@ import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.example.library_base.view.BaseActivity;
+import com.example.library_community.ARouterActivityPath;
 import com.example.library_community.ARouterPath;
+import com.example.library_community.util.SpUtil;
 import com.example.model_mine.adapter.FragmentAdapters;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
@@ -35,13 +38,14 @@ import java.util.ArrayList;
  * Time:19:53
  * author:yanghaoyang
  */
+@Route(path = ARouterActivityPath.mine.MINE_HOME)
 public class MineActivity  extends BaseActivity {
 
     private ArrayList<Fragment> list;
-    private FragmentAdapters adapters;
     private BottomBarLayout mineBb;
     private FrameLayout mineFm;
-
+    private boolean login;
+    private Boolean navigation = true;
 
 
     @Override
@@ -57,8 +61,12 @@ public class MineActivity  extends BaseActivity {
         mineFm =  findViewById(R.id.mine_fm);
     }
 
+
+
     @Override
     public void initData() {
+
+        login = (boolean) SpUtil.getInstance().get(this, "login", true, "login.db");
         ImmersionBar.with(this)
                 .hideBar(BarHide.FLAG_HIDE_BAR)
                 .init();
@@ -84,9 +92,25 @@ public class MineActivity  extends BaseActivity {
             @Override
             public void onItemSelected(BottomBarItem bottomBarItem, int previousPosition, int currentPosition) {
               if (list.get(currentPosition).isAdded()){
-                  getSupportFragmentManager().beginTransaction().hide(list.get(previousPosition)).show(list.get(currentPosition)).commitAllowingStateLoss();
+
+                  if (currentPosition==2&&login){
+                      ARouter.getInstance().build(ARouterActivityPath.login.LOGIN_HOME).navigation();
+                  }else if (currentPosition==3&&login){
+                      ARouter.getInstance().build(ARouterActivityPath.login.LOGIN_HOME).navigation();
+
+                  }else if (currentPosition==4&&login){
+                      ARouter.getInstance().build(ARouterActivityPath.login.LOGIN_HOME).navigation();
+
+                  }else {
+                      getSupportFragmentManager().beginTransaction().hide(list.get(previousPosition)).show(list.get(currentPosition)).commitAllowingStateLoss();
+
+                  }
+
+
               }else {
-                  getSupportFragmentManager().beginTransaction().hide(list.get(previousPosition)).add(R.id.mine_fm,list.get(currentPosition)).commitAllowingStateLoss();
+
+                      getSupportFragmentManager().beginTransaction().hide(list.get(previousPosition)).add(R.id.mine_fm,list.get(currentPosition)).commitAllowingStateLoss();
+
               }
             }
         });
@@ -95,10 +119,13 @@ public class MineActivity  extends BaseActivity {
     }
     @Subscribe(sticky = true)
     public void getvp(String msg){
+//        onResume();
         if (msg.equals("1")){
+
             EventBus.getDefault().postSticky("ntf");
             mineBb.setCurrentItem(2);
 
+            navigation = false;
         }
 
     }
@@ -107,5 +134,21 @@ public class MineActivity  extends BaseActivity {
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (navigation&&login){
+            for (int i = 0; i < list.size(); i++) {
+                getSupportFragmentManager().beginTransaction().hide(list.get(i)).commitAllowingStateLoss();
+
+            }
+            mineBb.setCurrentItem(0);
+        }else {
+            navigation = true;
+        }
+
+
     }
 }

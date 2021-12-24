@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        app:title="返回"
+        android:id="@+id/appraise_tb"
+        app:titleTextColor="#fff"
+        android:background="#2196F3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RatingBar
+
+        android:stepSize="1"
+        android:layout_gravity="center"
+        android:id="@+id/appraise_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </RatingBar>
+    <EditText
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/item_bg_style"
+        android:layout_gravity="center"
+        android:id="@+id/appraise_text"
+        android:lines="8"
+        android:hint="请提出，您的宝贵意见。"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_200">
+    </EditText>
+    <Button
+        android:id="@+id/appraise_but"
+        android:layout_gravity="center"
+        android:background="#FFC107"
+        android:text="提交"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+</LinearLayout>

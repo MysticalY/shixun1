@@ -213,6 +213,7 @@ public class PayoffActivity extends BaseActivity {
                         List<ShoppingBean> all = shoppingDao.findAll();
                         EventBus.getDefault().postSticky("pay");
                         Toast.makeText(PayoffActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                        total = 0;
                         finish();
 
                     } else {

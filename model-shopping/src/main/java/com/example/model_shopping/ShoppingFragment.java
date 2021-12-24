@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -25,6 +26,7 @@ import com.example.library_community.addressdb.AddressBean;
 import com.example.library_community.shappingdb.ShoppingBean;
 import com.example.library_community.shappingdb.ShoppingDao;
 import com.example.library_community.shappingdb.ShoppingDataBase;
+import com.example.library_community.util.SpUtil;
 import com.example.model_shopping.adapter.AddressAdapter;
 import com.example.model_shopping.adapter.ShoppingAdapter;
 import com.yanyusong.y_divideritemdecoration.Y_Divider;
@@ -66,6 +68,8 @@ public class ShoppingFragment extends BaseFragment {
     private List<ShoppingBean> list;
 
     private Toolbar shopTb;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -218,19 +222,21 @@ public class ShoppingFragment extends BaseFragment {
         shopPrice.setText(new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
         adapter.notifyDataSetChanged();
     }
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if (adapter!=null){
-//            adapter.getData().clear();
-//            shoppingDao = ShoppingDataBase.getInstance(getContext().getApplicationContext()).getShoppingDao();
-//            all = shoppingDao.findAll();
-//            adapter.getData().addAll(all);
-//            adapter.notifyDataSetChanged();
-//        }
-//
-//    }
-//
+    @Override
+    public void onResume() {
+        super.onResume();
+//        SpUtil.getInstance().put(getContext(),"login",false,"login.db");
+
+        if (adapter!=null){
+                    adapter.getData().clear();
+                    shoppingDao = ShoppingDataBase.getInstance(getContext().getApplicationContext()).getShoppingDao();
+                    all = shoppingDao.findAll();
+                    adapter.getData().addAll(all);
+                    adapter.notifyDataSetChanged();
+
+        }
+
+    }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void notifyAdapter(String msg) {
@@ -261,14 +267,15 @@ public class ShoppingFragment extends BaseFragment {
             List<ShoppingBean> all = shoppingDao.findAll();
             adapter.getData().clear();
             adapter.getData().addAll(all);
-//            adapter = new ShoppingAdapter(all);
-//            shopRv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+            if (shopCheckbox.isChecked()){
+                shopCheckbox.setChecked(false);
+            }
+            shopPrice.setText(String.valueOf(0.0));
 
         }
 
     }
-
 
     @Override
     public void onDestroy() {

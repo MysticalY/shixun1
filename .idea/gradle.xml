@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/model-mine" />
             <option value="$PROJECT_DIR$/model-principal" />
             <option value="$PROJECT_DIR$/model-shopping" />
+            <option value="$PROJECT_DIR$/model-subscriber" />
             <option value="$PROJECT_DIR$/model-tidings" />
           </set>
         </option>

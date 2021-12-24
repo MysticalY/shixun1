@@ -15,13 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.library_base.view.BaseFragment;
+import com.example.library_community.ARouterActivityPath;
 import com.example.library_community.ARouterPath;
 import com.example.library_community.util.GlideUtil;
 import com.example.library_community.util.LogUtils;
 import com.example.library_community.util.NetWorkSpeedUtils;
+import com.example.library_community.util.SpUtil;
 import com.example.model_principal.adapter.BannerAdapter;
 import com.example.model_principal.adapter.BrainAdapter;
 import com.example.model_principal.adapter.GroomAdapter;
@@ -29,6 +32,7 @@ import com.example.model_principal.bean.GroomBean;
 import com.example.model_principal.contract.GroomContract;
 import com.example.model_principal.model.GroomModel;
 import com.example.model_principal.presenter.GroomPresenter;
+import com.example.model_principal.view.DirectSeedingActivity;
 import com.example.model_principal.view.PrincipalActivity;
 import com.example.model_principal.view.SearchActivity;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -46,8 +50,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.jessyan.autosize.internal.CustomAdapt;
 
 /**
  * ██╗   ██╗   █████╗   ███╗    ██╗   ██████╗
@@ -74,7 +76,8 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
     private GroomAdapter groomAdapter;
     private ArrayList<Integer> bannerImg;
     private int page = 1;
-    private boolean is ;
+    private boolean is;
+    private boolean login;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -88,6 +91,7 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
     private TextView time;
     private RecyclerView groomRy;
     private SmartRefreshLayout groomSm;
+    private TextView directseeding;
 
     @Override
     public int bindLayout() {
@@ -107,6 +111,7 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
         groomRy = (RecyclerView) findViewById(R.id.groom_ry);
         groomSm = (SmartRefreshLayout) findViewById(R.id.groom_sm);
         pFragment = new GroomPresenter(new GroomModel(), this);
+        directseeding = (TextView) findViewById(R.id.directseeding);
     }
 
     @Override
@@ -120,6 +125,14 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        //去看直播
+        directseeding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), DirectSeedingActivity.class);
                 startActivity(intent);
             }
         });
@@ -137,7 +150,7 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
 //        Toast.makeText(getContext(), "" + networkOperatorName, Toast.LENGTH_SHORT).show();
         pFragment.getGroom(page, 20);
         groomRy.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-
+        login = (boolean) SpUtil.getInstance().get(getContext(), "login", true, "login.db");
     }
 
     private void banner2() {
@@ -219,14 +232,17 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
                 @Override
                 public void onItemClick(@NonNull @NotNull BaseQuickAdapter<?, ?> adapter, @NonNull @NotNull View view, int position) {
                     GroomBean.DataBean dataBean = data.get(position);
-                    Intent intent = new Intent(getActivity(), PrincipalActivity.class);
-
-                    intent.putExtra("groom",dataBean);
-                    startActivity(intent);
+                    if (login){
+                        ARouter.getInstance().build(ARouterActivityPath.login.LOGIN_HOME).navigation();
+                    }else {
+                        Intent intent = new Intent(getActivity(), PrincipalActivity.class);
+                        intent.putExtra("groom", dataBean);
+                        startActivity(intent);
+                    }
                 }
             });
-        }else {
-            if (is){
+        } else {
+            if (is) {
                 groomAdapter.getData().clear();
             }
             groomAdapter.getData().addAll(data);
@@ -239,14 +255,14 @@ public class PrincipalFragment extends BaseFragment<GroomPresenter> implements G
     public void onLoadMore(@NonNull @NotNull RefreshLayout refreshLayout) {
         is = false;
         page++;
-        pFragment.getGroom(page,20);
+        pFragment.getGroom(page, 20);
     }
 
     @Override
     public void onRefresh(@NonNull @NotNull RefreshLayout refreshLayout) {
         is = true;
         page = 1;
-        pFragment.getGroom(page,20);
+        pFragment.getGroom(page, 20);
     }
 
 
