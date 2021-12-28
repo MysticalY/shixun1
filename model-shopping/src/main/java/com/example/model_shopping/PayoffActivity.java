@@ -174,8 +174,8 @@ public class PayoffActivity extends BaseActivity {
     @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
     public void getAddress(AddressBean addressBean){
         if (addressBean!=null){
-            payoffName.setText(addressBean.getName());
-            payoffZone.setText(addressBean.getZone());
+            payoffName.setText("姓名"+addressBean.getName());
+            payoffZone.setText("地址"+addressBean.getZone());
         }
     }
     public void sum(){

@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.tencent.bugly.Bugly;
 import com.tencent.rtmp.TXLiveBase;
 
+import cn.jpush.android.api.JPushInterface;
 import io.rong.imkit.RongIM;
 
 /**
@@ -35,5 +37,8 @@ public class App extends Application {
         TXLiveBase.getInstance().setLicence(this, licenceURL, licenceKey);
         String appKey = "vnroth0kvoako";
         RongIM.init(this, appKey);
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+        Bugly.init(getApplicationContext(), "ed4fbccb1c", false);
     }
 }

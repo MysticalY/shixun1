@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.library_base.view.BaseActivity;
 import com.example.model_subscriber.R;
@@ -51,7 +53,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @Override
     public void initData() {
-
+//        NetworkUtils.isAvailableByPing();
+//        NetworkUtils.isAvailable()
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

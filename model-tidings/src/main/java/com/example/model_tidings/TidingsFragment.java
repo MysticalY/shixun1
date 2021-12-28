@@ -42,6 +42,7 @@ public class TidingsFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        
         tidingBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

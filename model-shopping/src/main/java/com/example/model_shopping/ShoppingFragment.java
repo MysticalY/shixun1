@@ -141,6 +141,7 @@ public class ShoppingFragment extends BaseFragment {
         adapter.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
             public void onItemChildClick(@NonNull @NotNull BaseQuickAdapter adapter, @NonNull @NotNull View view, int position) {
+                //选中不选中
                 if (view.getId() == R.id.shopping_cb) {
                     CheckBox checkBox = view.findViewById(R.id.shopping_cb);
                     if (checkBox.isChecked()) {

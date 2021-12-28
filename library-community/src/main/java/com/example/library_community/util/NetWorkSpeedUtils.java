@@ -5,6 +5,8 @@ import android.net.TrafficStats;
 import android.os.Handler;
 import android.os.Message;
 
+import com.blankj.utilcode.util.BarUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
